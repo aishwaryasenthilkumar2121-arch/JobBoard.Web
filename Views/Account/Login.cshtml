@@ -1,19 +1,74 @@
-﻿<h2>Login</h2>
+﻿@{
+    ViewData["Title"] = "Login";
+}
 
-<form method="post">
+<div class="container">
+    <div class="row justify-content-center mt-5">
 
-    <label>Email</label>
-    <input type="email" name="email" />
+        <div class="col-md-5">
 
-    <br /><br />
+            <div class="card shadow-lg border-0 rounded-4">
 
-    <label>Password</label>
-    <input type="password" name="password" />
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h2>JobBoard Login</h2>
+                    <p class="mb-0">Welcome Back</p>
+                </div>
 
-    <br /><br />
+                <div class="card-body p-4">
 
-    <button type="submit">Login</button>
+                    <form method="post">
 
-</form>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email"
+                                   name="email"
+                                   class="form-control"
+                                   placeholder="Enter your email"
+                                   required />
+                        </div>
 
-<p>@ViewBag.Message</p>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password"
+                                   name="password"
+                                   class="form-control"
+                                   placeholder="Enter your password"
+                                   required />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg">
+                                Login
+                            </button>
+                        </div>
+
+                    </form>
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-danger mt-3">
+                            @ViewBag.Message
+                        </div>
+                    }
+
+                    <hr />
+
+                    <div class="text-center">
+                        <p>
+                            Don't have an account?
+                            <a asp-controller="Account"
+                               asp-action="Register">
+                                Register Here
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
