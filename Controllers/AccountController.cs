@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using JobBoard.Web.Data;
 using JobBoard.Web.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace JobBoard.Web.Controllers
 {
@@ -36,7 +37,6 @@ namespace JobBoard.Web.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
@@ -45,11 +45,26 @@ namespace JobBoard.Web.Controllers
 
             if (user != null)
             {
-                return RedirectToAction("Index", "Job");
+                HttpContext.Session.SetString("UserName", user.FullName);
+                HttpContext.Session.SetString("Role", user.Role);
+
+                if (user.Role == "Employer")
+                {
+                    return RedirectToAction("Index", "Job");
+                }
+                else
+                {
+                    return RedirectToAction("CandidateDashboard", "Job");
+                }
             }
 
             ViewBag.Message = "Invalid Email or Password";
             return View();
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

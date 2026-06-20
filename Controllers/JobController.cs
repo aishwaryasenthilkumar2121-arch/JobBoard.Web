@@ -22,6 +22,13 @@ namespace JobBoard.Controllers
 
         public IActionResult Create()
         {
+            var role = HttpContext.Session.GetString("Role");
+
+            if (role != "Employer")
+            {
+                return RedirectToAction("CandidateDashboard");
+            }
+
             return View();
         }
 
@@ -35,6 +42,11 @@ namespace JobBoard.Controllers
                 return RedirectToAction("Index");
             }
             return View(job);
+        }
+        public IActionResult CandidateDashboard()
+        {
+            var jobs = _context.Jobs.ToList();
+            return View(jobs);
         }
     }
 }

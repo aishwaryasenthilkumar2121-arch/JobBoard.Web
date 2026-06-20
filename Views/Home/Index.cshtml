@@ -1,8 +1,136 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .hero {
+        background: linear-gradient(135deg, #2563eb, #1e40af);
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+
+    .btn-custom {
+        padding: 12px 25px;
+        margin: 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    .login-btn {
+        background-color: #22c55e;
+    }
+
+    .register-btn {
+        background-color: #f97316;
+    }
+
+    .features {
+        margin-top: 50px;
+    }
+
+    .feature-card {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .stats {
+        background: #eef2ff;
+        padding: 40px;
+        border-radius: 12px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        background: #111827;
+        color: white;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="hero">
+    <h1>Welcome to Job Board</h1>
+    <p>
+        Find your dream job or hire the perfect candidate with our
+        AI-powered Matching Algorithm.
+    </p>
+
+    <a href="/Account/Login" class="btn-custom login-btn">
+        Login
+    </a>
+
+    <a href="/Account/Register" class="btn-custom register-btn">
+        Register
+    </a>
+</div>
+
+<div class="container features">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h3>Smart Matching</h3>
+                <p>
+                    Match candidates and jobs using skill-based scoring.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h3>Resume Parsing</h3>
+                <p>
+                    Extract skills, education and experience automatically.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h3>Application Tracking</h3>
+                <p>
+                    Track job applications and recruitment progress.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="stats">
+    <h2>Platform Highlights</h2>
+    <p>✔ 1000+ Jobs Posted</p>
+    <p>✔ 500+ Companies Registered</p>
+    <p>✔ AI-Powered Matching Engine</p>
+</div>
+
+<div class="footer">
+    <p>© 2026 Job Board with Matching Algorithm</p>
 </div>

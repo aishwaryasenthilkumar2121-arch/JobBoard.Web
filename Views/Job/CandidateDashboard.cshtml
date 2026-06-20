@@ -1,0 +1,17 @@
+﻿@model IEnumerable<JobBoard.Web.Models.Job>
+
+<h2>Available Jobs</h2>
+
+<table class="table">
+    @foreach (var job in Model)
+    {
+        <tr>
+            <td>@job.JobTitle</td>
+            <td>@job.CompanyName</td>
+            <td>@job.SkillsRequired</td>
+            <td>
+                <button>Apply</button>
+            </td>
+        </tr>
+    }
+</table>
