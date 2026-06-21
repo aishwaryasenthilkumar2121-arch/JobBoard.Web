@@ -37,6 +37,7 @@ namespace JobBoard.Web.Controllers
         {
             return View();
         }
+        
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
@@ -47,6 +48,7 @@ namespace JobBoard.Web.Controllers
             {
                 HttpContext.Session.SetString("UserName", user.FullName);
                 HttpContext.Session.SetString("Role", user.Role);
+                HttpContext.Session.SetString("Email", user.Email);
 
                 if (user.Role == "Employer")
                 {

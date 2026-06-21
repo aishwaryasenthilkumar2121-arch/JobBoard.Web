@@ -1,7 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home";
-}
+﻿
+@using Microsoft.AspNetCore.Http
 
+@{
+    ViewData["Title"] = "Home";
+    var userName = Context.Session.GetString("UserName");
+}
 <style>
     .hero {
         background: linear-gradient(135deg, #2563eb, #1e40af);
@@ -74,21 +77,34 @@
         border-radius: 10px;
     }
 </style>
-
 <div class="hero">
     <h1>Welcome to Job Board</h1>
+
     <p>
         Find your dream job or hire the perfect candidate with our
         AI-powered Matching Algorithm.
     </p>
 
-    <a href="/Account/Login" class="btn-custom login-btn">
-        Login
-    </a>
+    @if (string.IsNullOrEmpty(userName))
+    {
+        <a href="/Account/Login" class="btn-custom login-btn">
+            Login
+        </a>
 
-    <a href="/Account/Register" class="btn-custom register-btn">
-        Register
-    </a>
+        <a href="/Account/Register" class="btn-custom register-btn">
+            Register
+        </a>
+    }
+    else
+    {
+        <p style="margin-top:20px; font-size:18px;">
+            Welcome back, <b>@userName</b> 👋
+        </p>
+
+        <a href="/Job/Index" class="btn-custom login-btn">
+            Browse Jobs
+        </a>
+    }
 </div>
 
 <div class="container features">

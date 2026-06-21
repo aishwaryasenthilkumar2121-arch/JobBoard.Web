@@ -1,4 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var userName = Context.Session.GetString("UserName");
+    var role = Context.Session.GetString("Role");
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +17,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/JobBoard.styles.css" asp-append-version="true" />
 </head>
+
 <body>
 
     <header>
@@ -40,15 +47,26 @@
                                 Home
                             </a>
                         </li>
+
+                        @if (!string.IsNullOrEmpty(userName) && role == "Employer")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Job"
+                                   asp-action="Create">
+                                    Create Post
+                                </a>
+                            </li>
+                        }
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
 
-                        @if (!string.IsNullOrEmpty(Context.Session.GetString("UserName")))
+                        @if (!string.IsNullOrEmpty(userName))
                         {
                             <li class="nav-item">
                                 <span class="nav-link text-white fw-bold">
-                                    Welcome, @Context.Session.GetString("UserName")
+                                    Welcome, @userName
                                 </span>
                             </li>
 
@@ -82,7 +100,6 @@
                     </ul>
 
                 </div>
-
             </div>
         </nav>
     </header>
